@@ -1,0 +1,12 @@
+{
+  "name": "cron-job",
+  "version": "1.0.0",
+  "description": "GitHub Actions cron job with Puppeteer",
+  "type": "module",
+  "scripts": {
+    "start": "node cron.js"
+  },
+  "dependencies": {
+    "puppeteer": "^21.0.0"
+  }
+}

@@ -1,0 +1,25 @@
+name: Run Puppeteer Cron
+
+on:
+  schedule:
+    - cron: "0 * * * *"  # Запуск щогодини
+  workflow_dispatch:  # Дозволяє запускати вручну
+
+jobs:
+  run-cron:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Клонування репозиторію
+        uses: actions/checkout@v4
+
+      - name: Встановлення Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Встановлення залежностей
+        run: npm install
+
+      - name: Запуск скрипту Puppeteer
+        run: npm start
