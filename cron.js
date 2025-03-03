@@ -16,7 +16,7 @@ import puppeteer from "puppeteer";
 
     // Отримуємо HTML-вміст сторінки (перевірка результату)
     const content = await page.content();
-    console.log("✅ Cron викликано успішно", content);
+    console.log("✅ Cron викликано успішно", content.slice(-1000));
 
     await browser.close();
 })();
