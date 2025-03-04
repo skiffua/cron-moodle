@@ -10,7 +10,10 @@ import puppeteer from 'puppeteer';
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     );
 
-    await page.goto("https://moodle-ua.free.nf/admin/cron.php?password=1234", {
+    const password = process.env.CRON_PASSWORD; // Отримуємо пароль із GitHub Secrets
+    const url = `https://moodle-ua.free.nf/admin/cron.php?password=${password}`;
+
+    await page.goto(url, {
         waitUntil: "networkidle2",
     });
 
