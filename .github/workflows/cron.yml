@@ -7,7 +7,7 @@ on:
 
 jobs:
   run-cron:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04  # Швидше, ніж `ubuntu-latest`
 
     steps:
       - name: Клонування репозиторію
@@ -18,8 +18,15 @@ jobs:
         with:
           node-version: 18
 
+      - name: Кешування Puppeteer
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/puppeteer
+          key: puppeteer-${{ runner.os }}
+          restore-keys: puppeteer-
+
       - name: Встановлення залежностей
         run: npm install
 
       - name: Запуск скрипту Puppeteer
-        run: npm start
+        run: node cron.js
